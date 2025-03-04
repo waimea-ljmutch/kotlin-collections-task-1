@@ -77,7 +77,7 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 0)
+    check(monkeys.count() == 4)
     check(monkeyCounter(monkeys) == "There are 4 monkeys!")
 
     // Try to delete 10 monkeys
@@ -91,7 +91,7 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 4)
+    check(monkeys.count() == 0)
     check(monkeyCounter(monkeys) == "There are no monkeys!")
 }
 
@@ -116,18 +116,23 @@ fun showMonkeys(monkeyList: List<String>) {
 
 }
 
-
 /**
  * Get a monkey name from the user (no blanks allowed)
  * and then add it to the given monkey list
  */
 fun getNewMonkey(monkeyList: MutableList<String>) {
     // Ask the user for a monkey name (no blanks)
-
+    while (true) {
+        
+    }
+    println("new monkey")
+    val userInput = readln()
+    if (userInput.isNotBlank()) break
     // Add the name to the list
-
+    monkeyList.add(0, (userInput))
     // Show some feedback
-    println("Added new monkey: NAME HERE")
+    println("Added new monkey: $userInput")
+
 }
 
 
@@ -140,7 +145,8 @@ fun getNewMonkey(monkeyList: MutableList<String>) {
  */
 fun monkeyCounter(monkeyList: List<String>): String {
     // return the number of monkeys in the list
-    return "MONKEY COUNT MESSAGE"   // FIXME!
+    val numMonkeys = monkeyList.size
+    return "There are $numMonkeys monkeys!"
 }
 
 
@@ -149,7 +155,13 @@ fun monkeyCounter(monkeyList: List<String>): String {
  */
 fun longestMonkeyName(monkeyList: List<String>): String {
     // Loop through the list and find the longest name
-    return "MONKEY NAME HERE"   // FIXME!
+    var longestWord = ""
+    for (name in monkeyList) {
+        if (name.length > longestWord.length) {
+            longestWord = name
+        }
+    }
+    return longestWord
 }
 
 
@@ -159,9 +171,9 @@ fun longestMonkeyName(monkeyList: List<String>): String {
  */
 fun deleteFirstMonkey(monkeyList: MutableList<String>) {
     // Remove the first one from the list
-
+    val remove = monkeyList.removeAt(0)
     // Show some feedback
-    println("Removing monkey: NAME HERE")
+    println("Removing monkey: $remove")
 }
 
 
@@ -171,8 +183,8 @@ fun deleteFirstMonkey(monkeyList: MutableList<String>) {
  */
 fun deleteLastMonkey(monkeyList: MutableList<String>) {
     // Remove the last one from the list
-
+    val remove = monkeyList.removeAt(4)
     // Show some feedback
-    println("Removing monkey: NAME HERE")
+    println("Removing monkey: $remove")
 }
 
